@@ -1,6 +1,6 @@
 # Informataion
 
-Tour Planner [https://kitchenware-1b0f4.web.app/](https://kitchenware-1b0f4.web.app/).
+KitchenWare [https://kitchenware-1b0f4.web.app/](https://kitchenware-1b0f4.web.app/).
 
 ## Features
 

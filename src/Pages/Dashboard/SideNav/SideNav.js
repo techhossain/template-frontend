@@ -1,9 +1,8 @@
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 const SideNav = () => {
-  let { url } = useRouteMatch();
   const { user, logOut, admin } = useAuth();
 
 
@@ -15,17 +14,17 @@ const SideNav = () => {
           <ul className="nav flex-column">
 
             <li className="nav-item">
-              <Link className="nav-link float-start" to={`${url}/pay`}>
+              <Link className="nav-link float-start" to="dashboard/pay">
                 Pay
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link float-start" to={`${url}/my-order`}>
+              <Link className="nav-link float-start" to="dashboard/my-order">
                 My Orders
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link float-start" to={`${url}/review`}>
+              <Link className="nav-link float-start" to="dashboard/review">
                 Review
               </Link>
             </li>
@@ -33,22 +32,22 @@ const SideNav = () => {
 
             {!admin ? '' : <span>
               <li className="nav-item">
-                <Link className="nav-link float-start" to={`${url}/add-product`}>
-                  Add A Product
+                <Link className="nav-link float-start" to="dashboard/add-product">
+                  Add A Post
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link float-start" to={`${url}/manage-product`}>
-                  Manage Products
+                <Link className="nav-link float-start" to="dashboard/manage-product">
+                  Manage Posts
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link float-start" to={`${url}/manage-orders`}>
+                <Link className="nav-link float-start" to="dashboard/manage-orders">
                   Manage All Orders
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link float-start" to={`${url}/make-admin`}>
+                <Link className="nav-link float-start" to="dashboard/make-admin">
                   Make Admin
                 </Link>
               </li>

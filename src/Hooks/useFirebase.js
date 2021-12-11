@@ -16,7 +16,7 @@ const useFirebase = () => {
   const googleProvider = new GoogleAuthProvider();
 
   // Google Login
-  const googleSignIn = (history, redirect_uri) => {
+  const googleSignIn = (navigate, redirect_uri) => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -26,7 +26,7 @@ const useFirebase = () => {
         setUser(user);
         console.log(user, email, name);
         saveUserToDb(email, name, "PUT");
-        history.push(redirect_uri);
+        navigate(redirect_uri);
       }).catch((error) => {
         // Handle Errors here.
         console.log(error.message);
@@ -35,7 +35,7 @@ const useFirebase = () => {
   }
 
   // Registration with the email & Password
-  const formRegister = (email, password, name, history) => {
+  const formRegister = (email, password, name, navigate) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
 
@@ -49,7 +49,7 @@ const useFirebase = () => {
         }).then(() => {
         }).catch((error) => {
         });
-        history.replace('/dashboard');
+        navigate('/dashboard');
       })
       .catch((error) => {
         console.log(error.code);

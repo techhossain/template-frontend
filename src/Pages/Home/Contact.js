@@ -4,23 +4,14 @@ import axios from 'axios';
 
 const Contact = () => {
   const [successMsg, setSuccessMsg] = useState('');
-
-  // const { user, formRegister, setUser, setError } = useAuth();
-
-  // const location = useLocation();
-  // const redirect_uri = location?.state?.from || '/';
-  // const history = useHistory();
-
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = data => {
     axios.post('http://localhost:5000/contact', data)
       .then(function (response) {
         if (response.data.insertedId) {
-          // alert('Added Successfully');
           setSuccessMsg('Added Successfully');
           reset();
-          // history.push(redirect_uri);
         }
       })
       .catch(function (error) {
@@ -34,14 +25,6 @@ const Contact = () => {
 
       <div className="row">
         <h2 className="text-center my-5">CONTACT US</h2>
-        <div className="alert alert-success alert-dismissible fade show" role="alert">
-          {
-            (successMsg) ? successMsg : ''
-
-          }
-          <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-
 
         <div className="col-md-6">
           <img className="my-5 border p-5 img-fluid" src="https://techhossain.github.io/tour-resources/image/contact.jpg" alt="contact" />

@@ -23,8 +23,7 @@ const Home = () => {
         </Row>
         <h2 className="my-5">Clients Feedback</h2>
         <Review />
-        <hr />
-        <Contact />
+
       </Container>
 
     </div>

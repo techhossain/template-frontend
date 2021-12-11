@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
-import { useHistory, useLocation } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import NavBar from '../Common/NavBar';
 
 const Login = () => {
@@ -11,11 +11,11 @@ const Login = () => {
 
   const location = useLocation();
   const redirect_uri = location?.state?.from || '/';
-  const history = useHistory();
+  const navigate = useNavigate();
 
   // Google Sign In 
   const handleGoogleSignIn = () => {
-    googleSignIn(history, redirect_uri);
+    googleSignIn(navigate, redirect_uri);
   }
 
 
@@ -32,7 +32,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        history.push(redirect_uri);
+        navigate(redirect_uri);
       });
 
   };
@@ -40,23 +40,34 @@ const Login = () => {
   return (
     <div className="container">
       <NavBar></NavBar>
-      <h2 className="text-center mt-3">Please Login</h2>
+      <h2 className="text-center my-3">Please Login</h2>
 
-      <form className="w-50 mx-auto" onSubmit={handleSubmit(onSubmit)}>
+      <div className="row">
+        <div className="col-md-8 offset-md-2">
+          <form className="mx-auto card card-body p-5" onSubmit={handleSubmit(onSubmit)}>
 
-        <input type="email" className="form-control" {...register("email", { required: true })} />
-        {errors.email && <span className="text-danger">Email field is required</span>}
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input type="email" className="form-control" {...register("email", { required: true })} />
+              {errors.email && <span className="text-danger">Email field is required</span>}
+            </div>
 
-        <input type="password" className="form-control" {...register("password", { required: true })} />
-        {errors.password && <span className="text-danger">Password field is required</span>}
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" className="form-control" {...register("password", { required: true })} />
+              {errors.password && <span className="text-danger">Password field is required</span>}
+            </div>
+            <input className='btn btn-success' type="submit" name="Login" />
+          </form>
 
-        <input type="submit" name="Login" />
-      </form>
-      <p>New User? <Link to="/register">Register Now</Link></p>
+          <p className='my-2'>New User? <Link to="/register">Register Now</Link></p>
+          <hr />
+          <button onClick={handleGoogleSignIn} className="btn btn-primary">Google Login</button>
 
-      <hr />
+        </div>
+      </div>
 
-      <button onClick={handleGoogleSignIn} className="btn btn-primary">Google Login</button>
+
 
 
     </div>

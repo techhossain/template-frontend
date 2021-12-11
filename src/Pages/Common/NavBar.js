@@ -26,6 +26,7 @@ const NavBar = () => {
             {user.email &&
               <button className="nav-link btn" onClick={logOut}>LogOut</button>
             }
+            <Link className="nav-link" to="/contact">Contact</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

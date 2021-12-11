@@ -19,9 +19,6 @@ const Products = () => {
           }
         </Row>
       </Container>
-
-
-
     </div>
   );
 };

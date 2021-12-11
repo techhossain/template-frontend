@@ -1,11 +1,9 @@
 import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
 import Header from './Header/Header';
 import MainContent from './MainContent/MainContent';
 import SideNav from './SideNav/SideNav';
 
 const Dashboard = () => {
-  let { path, url } = useRouteMatch();
 
   return (
     <>
